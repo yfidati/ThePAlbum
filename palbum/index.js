@@ -7,6 +7,12 @@ const path = require('path');
 
 const app = express();
 
+const corsOptions = {
+  origin: ['https://thepalbum-1.onrender.com'], // Allow only your frontend's deployed domain
+  methods: ['GET', 'POST', 'DELETE'],          // Specify allowed HTTP methods
+  credentials: true,                           // Allow cookies or authentication if needed
+};
+
 // MongoDB Connection
 mongoose
   .connect('mongodb+srv://fidati15:7Bd4hi9fXDOas5js@palbumcluster.azccv.mongodb.net/?retryWrites=true&w=majority&appName=PalbumCluster') // Updated database name
@@ -14,7 +20,9 @@ mongoose
   .catch((err) => console.error('MongoDB connection error:', err));
 
 // Middleware
-app.use(cors());
+
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
