@@ -11,7 +11,7 @@ export default function Album() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/albums/${id}`)
+      .get(`https://thepalbum.onrender.com/albums/${id}`)
       .then((response) => setAlbum(response.data))
       .catch((err) => setError('Failed to load album'));
   }, [id]);
@@ -26,14 +26,14 @@ export default function Album() {
     formData.append('image', image);
     
     axios
-      .post(`http://localhost:3000/albums/${id}`, formData )
+      .post(`https://thepalbum.onrender.com/albums/${id}`, formData )
       .then((response) => setAlbum(response.data))
       .catch((err) => setError('Failed to add image'));
   };
 
   const handleDeleteImage = (index) => {
     axios
-      .delete(`http://localhost:3000/albums/${id}/image/${index}`)
+      .delete(`https://thepalbum.onrender.com/albums/${id}/image/${index}`)
       .then(() => {
         const updatedImages = album.images.filter((_, i) => i !== index);
         setAlbum({ ...album, images: updatedImages });
@@ -54,7 +54,7 @@ export default function Album() {
       <div className="grid grid-cols-3 gap-4">
         {album?.images.map((img, index) => (
           <div key={index} className="border p-2">
-            <img src={`http://localhost:3000/uploads/${id}/${img}`} alt={img} className="w-full" />
+            <img src={`https://thepalbum.onrender.com/uploads/${id}/${img}`} alt={img} className="w-full" />
             <button
               onClick={() => handleDeleteImage(index)}
               className="bg-red-500 text-white  px-2 py-1 mt-2"

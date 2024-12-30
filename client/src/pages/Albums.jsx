@@ -10,7 +10,7 @@ export default function Albums() {
   // Fetch albums on component mount
   useEffect(() => {
     axios
-      .get('http://localhost:3000/albums')
+      .get('https://thepalbum.onrender.com/albums')
       .then((response) => {
         console.log('Fetched albums:', response.data);
         setAlbums(response.data);
@@ -26,7 +26,7 @@ export default function Albums() {
   // Handle album deletion
   const handleDeleteAlbum = (id) => {
     axios
-      .delete(`http://localhost:3000/albums/${id}`)
+      .delete(`https://thepalbum.onrender.com/albums/${id}`)
       .then(() => {
         setAlbums((prevAlbums) => prevAlbums.filter((album) => album._id !== id));
       })

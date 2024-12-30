@@ -9,7 +9,7 @@ export default function NewAlbum() {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post('http://localhost:3000/albums', { title })
+      .post('https://thepalbum.onrender.com/albums', { title })
       .then(() => navigate('/'))
       .catch((err) => {
         console.error('Error creating album:', err.message);
